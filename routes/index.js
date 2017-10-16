@@ -6,7 +6,9 @@ router.get('/', (req, res) => {
   const userInfo = {"Name": "Amr", "Age": 25, "title": "Web Developer"};
   // res.send('Hey! It works!');
   // res.json(userInfo);
-   res.render("hello");
+   res.render("hello", {
+     title: "Welcome to the food club!"
+   });
 });
 
 router.get('/reverse/:name', (req, res) => {
