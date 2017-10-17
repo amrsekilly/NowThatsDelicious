@@ -1,5 +1,10 @@
+//- extend the basic layout for the nav and the rest of the page
 extends layout
+
+//- include all the mixins for the stores
+include mixins/_storeForm
 
 block content
   .inner
     h2 #{title}
+    +addStore()
