@@ -1,20 +1,12 @@
-
-// a middleware for the username
-exports.getUserName = (req, res, next) => {
-  req.username = "Amr";
-  next();
+// homepage controller
+exports.homepage = (req, res) => {
+  res.render("index", {
+    title: "Welcome to the food club!"
+  });
 };
 
-exports.homepage = (req, res) => {
-  const userInfo = {
-    "Name": "Amr",
-    "Age": 25,
-    "title": "Web Developer"
-  };
-  // res.send('Hey! It works!');
-  // res.json(userInfo);
-  res.render("index", {
-    title: "Welcome to the food club!",
-    username: req.username
+exports.addStore = (req, res) => {
+  res.render("editStore", {
+    title: "Add Store"
   });
 };
