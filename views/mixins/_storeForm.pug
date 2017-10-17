@@ -1,4 +1,7 @@
 //- a mixin for the store form 
 
 mixin addStore(store = {}) 
-  p The form mixin works
+  form(enctype="multipart/form-data", method="POST", action="/add", class="card")
+    label(for="name") Store Name
+    input(name="name", type="text", placeholder="Store Name")
+    
