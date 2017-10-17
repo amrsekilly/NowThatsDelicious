@@ -5,8 +5,15 @@ exports.homepage = (req, res) => {
   });
 };
 
+// show the add store view
 exports.addStore = (req, res) => {
   res.render("editStore", {
     title: "Add Store"
   });
+};
+
+
+// saves a store to the DB
+exports.saveStore = (req, res) => {
+  res.send("store saved!");
 };
