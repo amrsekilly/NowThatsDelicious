@@ -3,5 +3,6 @@
 mixin addStore(store = {}) 
   form(enctype="multipart/form-data", method="POST", action="/add", class="card")
     label(for="name") Store Name
-    input(name="name", type="text", placeholder="Store Name")
-    
+    input(name="name", type="text", placeholder="Enter a Store Name")
+    label(for="description") Description
+    input(name="description", type="text", placeholder="Enter a Description")
