@@ -1,7 +1,7 @@
 //- a mixin for the store form 
 
 mixin addStore(store = {}) 
-  form(enctype="multipart/form-data", method="POST", action="/add", class="card")
+  form(method="POST", action="/add", class="card")
     label(for="name") Store Name
     input(name="name", type="text", placeholder="Enter a Store Name")
     label(for="description") Description
@@ -12,7 +12,7 @@ mixin addStore(store = {})
     ul.tags
       each tag in tags
         .tag.tag__choice 
-          input(type="checkbox", name="tags", id=tag, value="choice")
+          input(type="checkbox", name="tags", id=tag, value=tag)
           label(for="tags")=tag
           
     input(class="button", type="submit", value="Save Store ✔️")

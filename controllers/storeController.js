@@ -15,5 +15,5 @@ exports.addStore = (req, res) => {
 
 // saves a store to the DB
 exports.saveStore = (req, res) => {
-  res.send("store saved!");
+  res.json(req.body);
 };
