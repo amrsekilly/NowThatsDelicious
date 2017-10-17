@@ -6,3 +6,11 @@ mixin addStore(store = {})
     input(name="name", type="text", placeholder="Enter a Store Name")
     label(for="description") Description
     textarea(name="description", placeholder="Enter a Description")
+    //- Generate the list of tags 
+    - const tags = ["coffee", "dog friendly", "wifi", "safe", "open area"];
+    
+    ul.tags
+      each tag in tags
+        .tag.tag__choice 
+          input(type="checkbox", name="tags", id=tag, value="choice")
+          label(for="tags")=tag
