@@ -25,4 +25,10 @@ exports.saveStore = async (req, res) => {
   const store = Store(req.body);
   // save the user's input to the database
   await store.save();
+
+  // confirm that the store was saved
+  console.log("store saved!");
+
+  // redirect user to the homepage
+  res.redirect("/");
 };
