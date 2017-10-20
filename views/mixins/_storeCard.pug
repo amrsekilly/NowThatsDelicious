@@ -3,6 +3,11 @@
 mixin storeCard(store = {}) 
   .store
     .store__hero
+      .store__actions
+        button some actions
       img(src=`/uploads/${store.photo || 'store.png'}`, alt="")
       h2.title 
         a(href=`/store/${store.slug}`, target="_blank") #{store.name}
+    .store__details
+      //- limit the description to 25 words 
+      p= store.description.split(" ").slice(0, 25).join(" ")
