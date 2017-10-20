@@ -33,7 +33,14 @@ exports.saveStore = async (req, res) => {
 };
 
 // retrieve the stores from the DB
-exports.getStores = (req, res) => {
+exports.getStores = async (req, res) => {
+  // query the DB for stores
+  const stores = await Store.find();
+
+  // console log the stores
+  console.log(stores);
+
+  // render the template
   res.render("stores", {
     title: "Stores"
   });
