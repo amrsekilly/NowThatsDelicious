@@ -56,6 +56,7 @@ app.use((req, res, next) => {
   res.locals.flashes = req.flash();
   res.locals.user = req.user || null;
   res.locals.currentPath = req.path;
+  app.locals.basedir = path.join(__dirname, 'views');
   next();
 });
 

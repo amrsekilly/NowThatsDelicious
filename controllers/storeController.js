@@ -29,7 +29,7 @@ exports.saveStore = async (req, res) => {
   req.flash("success", `You've successfully added ${store.name} to the stores!`);
 
   // redirect user to the store page
-  res.redirect(`/stores/${store.slug}`);
+  res.redirect(`/store/${store.slug}`);
 };
 
 // retrieve the stores from the DB
@@ -38,10 +38,11 @@ exports.getStores = async (req, res) => {
   const stores = await Store.find();
 
   // console log the stores
-  console.log(stores);
+  // console.log(stores);
 
   // render the template
   res.render("stores", {
-    title: "Stores"
+    title: "Stores",
+    stores
   });
 };

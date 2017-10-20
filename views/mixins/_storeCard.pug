@@ -1,0 +1,8 @@
+//- a mixin for the store form 
+
+mixin storeCard(store = {}) 
+  .store
+    .store__hero
+      img(src=`/uploads/${store.photo || 'store.png'}`, alt="")
+      h2.title 
+        a(href=`/store/${store.slug}`, target="_blank") #{store.name}
