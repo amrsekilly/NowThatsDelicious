@@ -7,7 +7,8 @@ const Store = mongoose.model("Store");
 // homepage controller
 exports.homepage = (req, res) => {
   res.render("index", {
-    title: "Welcome to the food club!"
+    title: "Welcome to the food club!",
+    username: "Amr"
   });
 };
 
@@ -29,4 +30,11 @@ exports.saveStore = async (req, res) => {
 
   // redirect user to the store page
   res.redirect(`/stores/${store.slug}`);
+};
+
+// retrieve the stores from the DB
+exports.getStores = (req, res) => {
+  res.render("stores", {
+    title: "Stores"
+  });
 };
