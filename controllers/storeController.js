@@ -26,8 +26,8 @@ exports.saveStore = async (req, res) => {
   // save the user's input to the database
   await store.save();
 
-  // confirm that the store was saved
-  console.log("store saved!");
+  // add a flash to the session to confirm that the store was added
+  req.flash("success", `You've successfully added ${store.name} to the stores!`);
 
   // redirect user to the homepage
   res.redirect("/");
