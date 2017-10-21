@@ -13,6 +13,8 @@ router.get('/add',  storeController.addStore);
 router.post('/add',  catchErrors(storeController.saveStore));
 // for editing a store
 router.get("/stores/:id/edit", catchErrors(storeController.editStore));
+// for updating a store
+router.post("/add/:id",  catchErrors(storeController.updateStore));
 
 router.get('/reverse/:name', (req, res) => {
   // reverse the name entered in the prameters
