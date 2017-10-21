@@ -3,7 +3,7 @@
 mixin addStore(store = {}) 
   form(method="POST", action="/add", class="card")
     label(for="name") Store Name
-    input(name="name", type="text", placeholder="Enter a Store Name")
+    input(name="name", type="text", placeholder="Enter a Store Name", value=store.name)
     label(for="description") Description
     textarea(name="description", placeholder="Enter a Description")
     //- Generate the list of tags 
