@@ -56,3 +56,17 @@ exports.editStore = async (req, res) => {
     store
   });
 };
+
+exports.updateStore = async (req, res) => {
+  // update the store with the new data
+  const store = await Store.findOneAndUpdate({_id: req.params.id}, req.body, {
+    new: true,
+    // to make sure that the user didn't violate the mongoose schema
+    runValidators: true
+  }).exec();
+
+  // confirm the edit
+  req.flash("success", `You've successfully edited ${store.name}! View it <a href="/stores/${store.slug}">here</a>`);
+  // redirect the user to the stores page
+  res.redirect("/stores");
+};
