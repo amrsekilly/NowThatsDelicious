@@ -49,5 +49,7 @@ exports.getStores = async (req, res) => {
 
 // edit store controller
 exports.editStore = async (req, res) => {
-  res.json(req.params.id);
+  // get the selected store
+  const store = await Store.findOne({_id: req.params.id});
+  res.json(store);
 };
