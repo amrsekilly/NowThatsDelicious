@@ -5,14 +5,17 @@ mixin addStore(store = {})
     label(for="name") Store Name
     input(name="name", type="text", placeholder="Enter a Store Name", value=store.name)
     label(for="description") Description
-    textarea(name="description", placeholder="Enter a Description")
+    textarea(name="description", placeholder="Enter a Description")=store.description
     //- Generate the list of tags 
     - const tags = ["coffee", "dog friendly", "wifi", "safe", "open area"];
+    
+    //- for the selected tags for each store in the edit store
+    - const selectedTags = store.tags || [];
     
     ul.tags
       each tag in tags
         .tag.tag__choice 
-          input(type="checkbox", name="tags", id=tag, value=tag)
+          input(type="checkbox", name="tags", id=tag, value=tag checked=(selectedTags.includes(tag)))
           label(for="tags")=tag
           
     input(class="button", type="submit", value="Save Store ✔️")
