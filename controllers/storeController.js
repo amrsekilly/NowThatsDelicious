@@ -46,3 +46,8 @@ exports.getStores = async (req, res) => {
     stores
   });
 };
+
+// edit store controller
+exports.editStore = async (req, res) => {
+  res.json(req.params.id);
+};
