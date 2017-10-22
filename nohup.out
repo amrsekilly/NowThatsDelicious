@@ -1,0 +1,63 @@
+
+> dang-thats-delicious@0.0.0 start /Users/amr/starter-files
+> concurrently "npm run watch" "npm run assets" --names "💻,📦" --prefix name
+
+[💻] 
+[💻] > dang-thats-delicious@0.0.0 watch /Users/amr/starter-files
+[💻] > nodemon ./start.js --ignore public/
+[💻] 
+[📦] 
+[📦] > dang-thats-delicious@0.0.0 assets /Users/amr/starter-files
+[📦] > webpack -w --display-max-modules 0
+[📦] 
+[💻] [33m[nodemon] 1.11.0[39m
+[💻] [33m[nodemon] to restart at any time, enter `rs`[39m
+[💻] [33m[nodemon] watching: *.*[39m
+[💻] [32m[nodemon] starting `node ./start.js`[39m
+[📦] 
+[📦] Webpack is watching the files…
+[📦] 
+[💻] events.js:182
+[💻]       throw er; // Unhandled 'error' event
+[💻]       ^
+[💻] 
+[💻] Error: listen EADDRINUSE :::7777
+[💻]     at Object._errnoException (util.js:1021:11)
+[💻]     at _exceptionWithHostPort (util.js:1043:20)
+[💻]     at Server.setupListenHandle [as _listen2] (net.js:1344:14)
+[💻]     at listenInCluster (net.js:1385:12)
+[💻]     at Server.listen (net.js:1469:7)
+[💻]     at Function.listen (/Users/amr/starter-files/node_modules/express/lib/application.js:618:24)
+[💻]     at Object.<anonymous> (/Users/amr/starter-files/start.js:27:20)
+[💻]     at Module._compile (module.js:624:30)
+[💻]     at Object.Module._extensions..js (module.js:635:10)
+[💻]     at Module.load (module.js:545:32)
+[💻]     at tryModuleLoad (module.js:508:12)
+[💻]     at Function.Module._load (module.js:500:3)
+[💻]     at Function.Module.runMain (module.js:665:10)
+[💻]     at startup (bootstrap_node.js:187:16)
+[💻]     at bootstrap_node.js:608:3
+[💻] [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[📦] Hash: c793b425f8f2a7d1f358
+[📦] Version: webpack 2.2.1
+[📦] Time: 2850ms
+[📦]             Asset     Size  Chunks             Chunk Names
+[📦]     App.bundle.js  3.53 kB       0  [emitted]  App
+[📦]         style.css  25.6 kB       0  [emitted]  App
+[📦] App.bundle.js.map  4.42 kB       0  [emitted]  App
+[📦]     style.css.map  61.5 kB       0  [emitted]  App
+[📦]     + 9 hidden modules
+[📦] Child extract-text-webpack-plugin:
+[📦]         + 7 hidden modules
+[💻] npm run watch exited with code null
+[📦] npm run assets exited with code null
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! dang-thats-delicious@0.0.0 start: `concurrently "npm run watch" "npm run assets" --names "💻,📦" --prefix name`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the dang-thats-delicious@0.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/amr/.npm/_logs/2017-10-22T21_38_23_923Z-debug.log

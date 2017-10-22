@@ -6,6 +6,10 @@ mixin addStore(store = {})
     input(name="name", type="text", placeholder="Enter a Store Name", value=store.name)
     label(for="description") Description
     textarea(name="description", placeholder="Enter a Description")=store.description
+
+    label(for="address") Address
+    input(type="text", id="address", name="location[address]", placeholder="Enter your address", value=(store.location && store.location.address))
+
     //- Generate the list of tags 
     - const tags = ["coffee", "dog friendly", "wifi", "safe", "open area"];
     
