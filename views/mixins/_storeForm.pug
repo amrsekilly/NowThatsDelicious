@@ -1,7 +1,7 @@
 //- a mixin for the store form 
 
 mixin addStore(store = {}) 
-  form(method="POST", action=`/add/${store._id || ""}`, class="card")
+  form(method="POST", action=`/add/${store._id || ""}`, class="card", enctype="multipart/form-data")
     label(for="name") Store Name
     input(name="name", type="text", placeholder="Enter a Store Name", value=store.name)
     label(for="description") Description

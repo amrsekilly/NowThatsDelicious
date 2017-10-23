@@ -1,9 +1,29 @@
 // require mongoose
-
 const mongoose = require("mongoose");
+
+// require multer for multpart data in the form
+const multer = require("multer");
 
 // get the Store model
 const Store = mongoose.model("Store");
+
+
+// multer options
+const multerOptions = {
+  storage: multer.memoryStorage(),
+  filterFile: (req, res, next) => {
+    const suppportedFileType = req.mimeType.startsWith("image/");
+
+    if (suppportedFileType) {
+      // no error
+      next(null, true);
+    }
+    else {
+      // raise an error
+      next({message: "Please enter a valid image"}, false);
+    }
+  }
+};
 
 // homepage controller
 exports.homepage = (req, res) => {
