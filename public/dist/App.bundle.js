@@ -155,6 +155,13 @@ function autocomplete(input, latInput, lngInput) {
         latInput.value = loc.geometry.location.lat();
         lngInput.value = loc.geometry.location.lng();
     });
+
+    // disable form submission
+    input.on('keydown', function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+        }
+    });
 }
 
 exports.default = autocomplete;
