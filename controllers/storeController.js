@@ -11,16 +11,16 @@ const Store = mongoose.model("Store");
 // multer options
 const multerOptions = {
   storage: multer.memoryStorage(),
-  filterFile: (req, res, next) => {
+  fileFilter: (req, res, cb) => {
     const suppportedFileType = req.mimeType.startsWith("image/");
 
     if (suppportedFileType) {
-      // no error
-      next(null, true);
+      // Accept file -- no error to the callback
+      cb(null, true);
     }
     else {
-      // raise an error
-      next({message: "Please enter a valid image"}, false);
+      // Reject file -- return an error message
+      cb({message: "Please enter a valid image"}, false);
     }
   }
 };
