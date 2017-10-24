@@ -94,3 +94,6 @@ exports.updateStore = async (req, res) => {
   // redirect the user to the stores page
   res.redirect("/stores");
 };
+
+// the upload image middleware
+exports.uploadImage = multer(multerOptions).single("img");
