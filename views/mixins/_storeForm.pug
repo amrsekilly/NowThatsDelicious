@@ -6,6 +6,12 @@ mixin addStore(store = {})
     input(name="name", type="text", placeholder="Enter a Store Name", value=store.name)
     label(for="description") Description
     textarea(name="description", placeholder="Enter a Description")=store.description
+    //- upload image
+    label(for="photo") Upload an Image 
+    input(type="file", name="photo", id="photo", accept="image/gif, image/png, image/jpeg")
+    //- if the store had a photo, show it to the user
+    if store.photo
+    img(src=`/uploads/${store.photo}`, alt=store.name width="200")
     //- address
     label(for="address") Address
     input(type="text", id="address", name="location[address]", placeholder="Enter your address", value=(store.location && store.location.address))
