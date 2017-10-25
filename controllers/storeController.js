@@ -30,7 +30,10 @@ const multerOptions = {
   }
 };
 
-// the upload image middleware
+/* 
+* The upload image middleware 
+* with a fieldname of photo to match the input name
+*/
 exports.uploadImage = multer(multerOptions).single("photo");
 
 // Image Resizing Middleware
@@ -39,7 +42,11 @@ exports.resize = async (req, res, next) => {
   if(!req.file) next();
 
   // if there's a file, do the resizing and saving
-  console.log(req.file);
+  // console.log(req.file);
+  // get the extension from the mimetype
+  const imgExtension = req.file.mimetype.split("/")[1];
+  console.log(imgExtension);
+
 };
 
 // homepage controller
