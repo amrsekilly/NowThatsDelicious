@@ -52,7 +52,7 @@ exports.resize = async (req, res, next) => {
   // resize the image
   await image.resize(800, Jimp.AUTO);
   // Save the resized image to the disc 
-  await image.write(`/public/uploads/${req.body.photo}`);
+  await image.write(`./public/uploads/${req.body.photo}`);
   // move to the next middleware
   next();
 };
