@@ -5,7 +5,7 @@ const Store = mongoose.model("Store");
 // require multer for multipart data in the form
 const multer = require("multer");
 // require jimp for image resizing
-const jimp = require("jimp");
+const Jimp = require("jimp");
 /*
 * require uuid for generating a 
 * unique ID for each image before storing it.
@@ -45,9 +45,16 @@ exports.resize = async (req, res, next) => {
   // if there's a file, do the resizing and saving
   // get the extension from the mimetype
   const imgExtension = req.file.mimetype.split("/")[1];
-  // rename the image stord in buffer and append it to the req.body
+  // rename the image stored in buffer and append it to the req.body
   req.body.photo = `${uuid.v4()}.${imgExtension}`;
-  console.log(req.body.photo);
+  // get the image from the buffer into Jimp
+  const image = await Jimp.read(req.file.buffer);
+  // resize the image
+  await image.resize(800, Jimp.AUTO);
+  // Save the resized image to the disc 
+  await image.write(`/public/uploads/${req.body.photo}`);
+  // move to the next middleware
+  next();
 };
 
 // homepage controller
