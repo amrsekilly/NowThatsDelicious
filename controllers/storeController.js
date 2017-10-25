@@ -1,12 +1,16 @@
 // require mongoose
 const mongoose = require("mongoose");
-
-// require multer for multpart data in the form
-const multer = require("multer");
-
 // get the Store model
 const Store = mongoose.model("Store");
-
+// require multer for multipart data in the form
+const multer = require("multer");
+// require jimp for image resizing
+const jimp = require("jimp");
+/*
+* require uuid for generating a 
+* unique ID for each image before storing it.
+*/
+const uuid = require("uuid");
 
 // multer options
 const multerOptions = {
