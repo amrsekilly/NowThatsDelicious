@@ -14,7 +14,11 @@ router.get('/stores', catchErrors(storeController.getStores));
 // for getting the addStore view
 router.get('/add', storeController.addStore);
 // for saving a new store
-router.post('/add', catchErrors(storeController.saveStore));
+router.post('/add',
+storeController.uploadImage,
+catchErrors(storeController.resize),
+catchErrors(storeController.saveStore)
+);
 // for editing a store
 router.get("/stores/:id/edit", catchErrors(storeController.editStore));
 // for updating a store

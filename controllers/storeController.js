@@ -15,9 +15,10 @@ const uuid = require("uuid");
 // multer options
 const multerOptions = {
   storage: multer.memoryStorage(),
-  fileFilter: (req, res, cb) => {
-    const suppportedFileType = req.mimeType.startsWith("image/");
-
+  fileFilter(req, file, cb) {
+    // make sure that the MIME filetype indecates an image
+    const suppportedFileType = file.mimetype.startsWith("image/");
+    // if it's an image, move on to the next middleware
     if (suppportedFileType) {
       // Accept file -- no error to the callback
       cb(null, true);
@@ -27,6 +28,18 @@ const multerOptions = {
       cb({message: "Please enter a valid image"}, false);
     }
   }
+};
+
+// the upload image middleware
+exports.uploadImage = multer(multerOptions).single("photo");
+
+// Image Resizing Middleware
+exports.resize = async (req, res, next) => {
+  // if no file is uploaded skip to the next middleware
+  if(!req.file) next();
+
+  // if there's a file, do the resizing and saving
+  console.log(req.file);
 };
 
 // homepage controller
@@ -99,5 +112,3 @@ exports.updateStore = async (req, res) => {
   res.redirect("/stores");
 };
 
-// the upload image middleware
-exports.uploadImage = multer(multerOptions).single("img");
