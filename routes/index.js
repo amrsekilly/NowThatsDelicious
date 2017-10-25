@@ -22,7 +22,10 @@ catchErrors(storeController.saveStore)
 // for editing a store
 router.get("/stores/:id/edit", catchErrors(storeController.editStore));
 // for updating a store
-router.post("/add/:id", catchErrors(storeController.updateStore));
+router.post("/add/:id", 
+storeController.uploadImage,
+catchErrors(storeController.resize),
+catchErrors(storeController.updateStore));
 
 // export the router
 module.exports = router;

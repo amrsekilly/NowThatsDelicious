@@ -40,7 +40,11 @@ exports.uploadImage = multer(multerOptions).single("photo");
 // Image Resizing Middleware
 exports.resize = async (req, res, next) => {
   // if no file is uploaded skip to the next middleware
-  if(!req.file) next();
+  if(!req.file) {
+    next();
+    // make sure to exit the middleware
+    return;
+  }
 
   // if there's a file, do the resizing and saving
   // get the extension from the mimetype
