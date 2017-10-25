@@ -9,6 +9,7 @@ const jimp = require("jimp");
 /*
 * require uuid for generating a 
 * unique ID for each image before storing it.
+* I'll use Version 4 for best randomness
 */
 const uuid = require("uuid");
 
@@ -42,11 +43,11 @@ exports.resize = async (req, res, next) => {
   if(!req.file) next();
 
   // if there's a file, do the resizing and saving
-  // console.log(req.file);
   // get the extension from the mimetype
   const imgExtension = req.file.mimetype.split("/")[1];
-  console.log(imgExtension);
-
+  // rename the image stord in buffer and append it to the req.body
+  req.body.photo = `${uuid.v4()}.${imgExtension}`;
+  console.log(req.body.photo);
 };
 
 // homepage controller
