@@ -131,3 +131,13 @@ exports.updateStore = async (req, res) => {
   res.redirect("/stores");
 };
 
+
+// controller to get stores by slug 
+exports.getStoreBySlug = async (req, res) => {
+  // get the store
+  const store = await Store.findOne({ slug: req.params.slug });
+  res.render("storeView", {
+    title: `Edit ${store.name}`,
+    store
+  });
+}

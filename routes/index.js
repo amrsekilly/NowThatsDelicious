@@ -13,6 +13,8 @@ router.get('/', catchErrors(storeController.getStores));
 router.get('/stores', catchErrors(storeController.getStores));
 // for getting the addStore view
 router.get('/add', storeController.addStore);
+// get store by slug 
+router.get("/store/:slug", catchErrors(storeController.getStoreBySlug));
 // for saving a new store
 router.post('/add',
 storeController.uploadImage,
