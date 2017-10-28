@@ -133,9 +133,12 @@ exports.updateStore = async (req, res) => {
 
 
 // controller to get stores by slug 
-exports.getStoreBySlug = async (req, res) => {
+exports.getStoreBySlug = async (req, res, next) => {
   // get the store
   const store = await Store.findOne({ slug: req.params.slug });
+  // if the store is not found render the 404
+  if(!store) return next();
+  // else render the store view
   res.render("storeView", {
     title: `Edit ${store.name}`,
     store
