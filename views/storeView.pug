@@ -1,8 +1,8 @@
-extends layout 
+extends layout
 
 block content
-  .sigle
-    .signle__hero
+  .single
+    .single__hero
       img.single__image(src=`/uploads/${store.photo || 'store.png'}`, alt=`${store.name}`)
       h2.title.title--single
         a(href=`/store/${store.slug}`) #{store.name}
