@@ -6,3 +6,6 @@ block content
       img.single__image(src=`/uploads/${store.photo || 'store.png'}`, alt=`${store.name}`)
       h2.title.title--single
         a(href=`/store/${store.slug}`) #{store.name}
+
+  .single__details.inner 
+    img.single__map(src=h.staticMap(store.location.coordinates), alt="")
