@@ -1,4 +1,6 @@
 extends layout 
 
 block content
-  p store View
+  .sigle
+    .signle__hero
+      img.single__image(src=`/uploads/${store.photo || 'store.png'}`, alt=`${store.name}`)

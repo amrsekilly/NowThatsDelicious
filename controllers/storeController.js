@@ -140,7 +140,7 @@ exports.getStoreBySlug = async (req, res, next) => {
   if(!store) return next();
   // else render the store view
   res.render("storeView", {
-    title: `Edit ${store.name}`,
+    title: `${store.name}`,
     store
   });
 }
