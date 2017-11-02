@@ -144,3 +144,9 @@ exports.getStoreBySlug = async (req, res, next) => {
     store
   });
 }
+
+
+// get stores by tag
+exports.getStoresByTag = async (req, res) => {
+  res.send("tags page");
+}

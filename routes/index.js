@@ -15,6 +15,10 @@ router.get('/stores', catchErrors(storeController.getStores));
 router.get('/add', storeController.addStore);
 // get store by slug 
 router.get("/store/:slug", catchErrors(storeController.getStoreBySlug));
+// get the stores by tags 
+router.get("/tags/", catchErrors(storeController.getStoresByTag));
+// get the stores for a certain tag
+router.get("/tags/:tag", catchErrors(storeController.getStoresByTag));
 // for saving a new store
 router.post('/add',
 storeController.uploadImage,
