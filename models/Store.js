@@ -62,4 +62,11 @@ storeSchema.pre("save", async function(next) {
   next();
 });
 
+// aggrigate the stores by tags 
+storeSchema.statics.getTagsList = function() {
+  return this.aggregate([
+    {$unwind: "$tags"}
+  ]);
+};
+
 module.exports = mongoose.model("Store", storeSchema);
