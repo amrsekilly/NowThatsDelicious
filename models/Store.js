@@ -65,7 +65,8 @@ storeSchema.pre("save", async function(next) {
 // aggrigate the stores by tags 
 storeSchema.statics.getTagsList = function() {
   return this.aggregate([
-    {$unwind: "$tags"}
+    {$unwind: "$tags"},
+    { $group: { _id: "$tags", count: { $sum: 1}}}
   ]);
 };
 
