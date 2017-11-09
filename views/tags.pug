@@ -1,0 +1,15 @@
+//- extend the basic layout for the nav and the rest of the page
+extends layout
+
+block content
+  .inner
+    h2 
+      title 
+    ul.tags 
+      each t in tags 
+        li.tag
+          a.tag__link(href=`/tags/${t._id}`)
+            span.tag__text= t._id
+            span.tag__count= t.count
+          
+    

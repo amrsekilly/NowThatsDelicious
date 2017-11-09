@@ -151,5 +151,8 @@ exports.getStoresByTag = async (req, res) => {
   // aggregate the stores with tags
   const tags = await Store.getTagsList();
   // return the result to the user 
-  res.json(tags);
+  res.render("tags", {
+    title: "tags",
+    tags
+  });
 }
