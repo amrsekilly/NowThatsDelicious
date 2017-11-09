@@ -150,9 +150,12 @@ exports.getStoreBySlug = async (req, res, next) => {
 exports.getStoresByTag = async (req, res) => {
   // aggregate the stores with tags
   const tags = await Store.getTagsList();
+  // get the current tag we're in
+  const tag = req.params.tag;
   // return the result to the user 
   res.render("tags", {
     title: "tags",
-    tags
+    tags,
+    tag
   });
 }
