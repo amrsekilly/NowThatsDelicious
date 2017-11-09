@@ -3,7 +3,7 @@ extends layout
 
 block content
   .inner
-    h2= tag
+    h2= tag || "tags"
     ul.tags 
       each t in tags 
         li.tag
