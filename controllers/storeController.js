@@ -149,7 +149,7 @@ exports.getStoreBySlug = async (req, res, next) => {
 // get stores by tag
 exports.getStoresByTag = async (req, res) => {
   // aggregate the stores with tags
-  const stores = await Store.getTagsList();
+  const tags = await Store.getTagsList();
   // return the result to the user 
-  res.json(stores);
+  res.json(tags);
 }
