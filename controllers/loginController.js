@@ -65,5 +65,5 @@ exports.register = async (req, res, next) => {
   await register(userData, req.body.password);
   // move to the next middleware to login the user 
   res.send("User Registered Successfully");
-  next();
+  // next();
 };
