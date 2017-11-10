@@ -61,14 +61,6 @@ exports.resize = async (req, res, next) => {
   next();
 };
 
-// homepage controller
-exports.homepage = (req, res) => {
-  res.render("index", {
-    title: "Welcome to the food club!",
-    username: "Amr"
-  });
-};
-
 // show the add store view
 exports.addStore = (req, res) => {
   res.render("editStore", {
@@ -159,11 +151,12 @@ exports.getStoresByTag = async (req, res) => {
 
   // wait for the promises to finish 
   const [tags, stores] = await Promise.all([tagsPromise, storesPromise]);
-  res.json(stores);
+  // res.json(stores);
   // return the result to the user 
-  // res.render("tags", {
-  //   title: "tags",
-  //   tags,
-  //   tag
-  // });
+  res.render("tags", {
+    title: "tags",
+    tags,
+    tag,
+    stores
+  });
 }
