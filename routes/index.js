@@ -27,7 +27,7 @@ authController.login);
 // login route
 router.post("/login", authController.login);
 // for getting the addStore view
-router.get('/add', storeController.addStore);
+router.get('/add', authController.isLoggedIn, storeController.addStore);
 // get store by slug 
 router.get("/store/:slug", catchErrors(storeController.getStoreBySlug));
 // get the stores by tags 

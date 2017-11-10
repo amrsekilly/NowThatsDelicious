@@ -18,3 +18,13 @@ exports.logout = (req, res) => {
   // redirect them back to the homepage
   res.redirect("/");
 }
+
+// check if the user is logged in
+exports.isLoggedIn = (req, res, next) => {
+  if(req.user) {
+    next();
+    return;
+  }
+  req.flash("error", "You must login First!");
+  res.redirect("/login");
+};
