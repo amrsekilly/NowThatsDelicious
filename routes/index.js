@@ -15,6 +15,8 @@ router.get('/', catchErrors(storeController.getStores));
 router.get('/stores', catchErrors(storeController.getStores));
 // for login 
 router.get("/login", loginController.loginForm); 
+// for logout 
+router.get("/logout", authController.logout); 
 // for register 
 router.get("/register", loginController.registerForm); 
 // post the validation data to the server 
