@@ -143,11 +143,13 @@ exports.getStoresByTag = async (req, res) => {
 
   // get the current tag we're in
   const tag = req.params.tag;
+  // create a tagQuery that falls back to all stores with a tag 
+  const tagQuery = tag || {$exists: true};
 
   // aggregate the tags
   const tagsPromise = Store.getTagsList();
   // the stores under the active tag
-  const storesPromise = Store.find({tags: tag});
+  const storesPromise = Store.find({tags: tagQuery});
 
   // wait for the promises to finish 
   const [tags, stores] = await Promise.all([tagsPromise, storesPromise]);
