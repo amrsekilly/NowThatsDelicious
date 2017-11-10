@@ -34,4 +34,15 @@ exports.validateRegister = (req, res, next) => {
   req.checkBody("confirm-password", "Please supply a valid password").notEmpty();
   req.checkBody("confirm-password", "Your passwords don't match").equals(req.body.password);
 
+  const errors = req.validationErrors();
+
+  if (errors) {
+    req.flash("error", errors.map(error => error.msg));
+    res.render("registerForm", {
+      title: "Register",
+      body: req.body,
+      flashes: req.flash()
+    });
+  }
+
 };

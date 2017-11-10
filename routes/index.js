@@ -16,6 +16,8 @@ router.get('/stores', catchErrors(storeController.getStores));
 router.get("/login", loginController.loginForm); 
 // for register 
 router.get("/register", loginController.registerForm); 
+// post the validation data to the server 
+router.post("/register", loginController.validateRegister);
 // for getting the addStore view
 router.get('/add', storeController.addStore);
 // get store by slug 
