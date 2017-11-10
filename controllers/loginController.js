@@ -1,9 +1,9 @@
 // require mongoose
 const mongoose = require("mongoose");
-// get the user model
-const User = mongoose.model("User");
 // import the promisify package
 const promisify = require("es6-promisify");
+// get the user model
+const User = mongoose.model("User");
 
 // show the login form
 exports.loginForm = (req, res) => {
@@ -49,6 +49,7 @@ exports.validateRegister = (req, res, next) => {
       flashes: req.flash()
     });
   }
+  next();
 };
 
 // register middleware to store the user info to the DB 
