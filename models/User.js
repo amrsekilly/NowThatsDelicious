@@ -24,7 +24,9 @@ const userSchema = new Schema({
   }
 });
 
-
+// plug in the passport plugin for the password authentication
+userSchema.plugin(passportLocalMongoose, {usernameField: "email"});
+userSchema.plugin(mongodbErrorHandler);
 
 // export the user model
 module.exports = mongoose.model("User", userSchema);
