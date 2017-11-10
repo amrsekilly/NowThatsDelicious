@@ -158,8 +158,8 @@ exports.getStoresByTag = async (req, res) => {
   const storesPromise = Store.find({tags: tag});
 
   // wait for the promises to finish 
-  const promises = await Promise.all([tagsPromise, storesPromise]);
-  res.json(promises);
+  const [tags, stores] = await Promise.all([tagsPromise, storesPromise]);
+  res.json(stores);
   // return the result to the user 
   // res.render("tags", {
   //   title: "tags",
