@@ -23,7 +23,7 @@ mixin addStore(store = {})
     input(type="text", id="lat", name="location[coordinates][1]", placeholder="Enter the Lat for your location", value=(store.location && store.location.coordinates[1]))
 
     //- Generate the list of tags 
-    - const tags = ["coffee", "dog friendly", "wifi", "safe", "open area"];
+    - const tags = ["coffee", "dog friendly", "wifi", "safe", "open area", "open Late"];
     
     //- for the selected tags for each store in the edit store
     - const selectedTags = store.tags || [];
