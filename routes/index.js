@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const storeController = require('../controllers/storeController');
+const loginController = require('../controllers/loginController');
 // import the error handlers
 const { catchErrors } = require("../handlers/errorHandlers");
 
@@ -11,6 +12,8 @@ const { catchErrors } = require("../handlers/errorHandlers");
 router.get('/', catchErrors(storeController.getStores));
 // get a list of the stores
 router.get('/stores', catchErrors(storeController.getStores));
+// for login 
+router.get("/login", loginController.loginForm); 
 // for getting the addStore view
 router.get('/add', storeController.addStore);
 // get store by slug 
