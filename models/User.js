@@ -23,3 +23,8 @@ const userSchema = new Schema({
     required: "Supply your name please"
   }
 });
+
+
+
+// export the user model
+module.exports = mongoose.model("User", userSchema);
