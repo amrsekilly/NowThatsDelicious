@@ -1,6 +1,9 @@
 //- extend the basic layout for the nav and the rest of the page
 extends layout
 
+include mixins/_loginForm
+
 block content
   .inner
     h2= title 
+    +loginForm()
