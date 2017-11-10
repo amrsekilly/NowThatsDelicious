@@ -1,12 +1,17 @@
 // require mongoose
 const mongoose = require("mongoose");
+// get the user model
+const User = mongoose.model("User");
+// import the promisify package
+const promisify = require("es6-promisify");
 
+// show the login form
 exports.loginForm = (req, res) => {
   res.render("loginForm", {
     title: "Login"
   });
 };
-
+// show the sign up form
 exports.registerForm = (req, res) => {
   res.render("registerForm", {
   title: "Register"
@@ -44,5 +49,20 @@ exports.validateRegister = (req, res, next) => {
       flashes: req.flash()
     });
   }
+};
 
+// register middleware to store the user info to the DB 
+exports.register = async (req, res, next) => {
+  const userData = new User({
+    email: req.body.email, 
+    name: req.body.name
+  });
+  // to store the password we need to use passport
+  // turn the callback-based method into a promise method using promisify
+  const register = promisify(User.register, User);
+  // await this register method to do the registering to the DB
+  await register(userData, req.body.password);
+  // move to the next middleware to login the user 
+  res.send("User Registered Successfully");
+  next();
 };
