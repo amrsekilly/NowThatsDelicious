@@ -24,6 +24,8 @@ router.post("/register",
 loginController.validateRegister,
 catchErrors(loginController.register),
 authController.login);
+// login route
+router.post("/login", authController.login);
 // for getting the addStore view
 router.get('/add', storeController.addStore);
 // get store by slug 
