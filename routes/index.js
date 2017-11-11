@@ -16,7 +16,7 @@ router.get('/stores', catchErrors(storeController.getStores));
 // for login 
 router.get("/login", loginController.loginForm); 
 // get user's account to edit it 
-router.get("/account", loginController.editAccount);
+router.get("/account", authController.isLoggedIn, loginController.editAccount);
 // for logout 
 router.get("/logout", authController.logout); 
 // for register 
