@@ -66,3 +66,11 @@ exports.register = async (req, res, next) => {
   // move to the next middleware to login the user 
   next();
 };
+
+// the edit account middleware
+exports.editAccount = (req, res) => {
+  // render out the edit account view
+  res.render("account", {
+    title: "Edit your account"
+  })
+}
