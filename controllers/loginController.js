@@ -73,4 +73,26 @@ exports.editAccount = (req, res) => {
   res.render("account", {
     title: "Edit your account"
   })
+};
+
+// apply the account edits to the DB 
+exports.applyAccountEdits = async (req, res) => {
+  // the new user data
+  const updatedData = {
+    name: req.body.name,
+    email: req.body.email
+  };
+  // apply these edits to the DB 
+  const user = await User.findOneAndUpdate({
+    _id: req.user.id,  
+  }, {
+    $set: updatedData
+}, {
+  new: true,
+  runValidators: true,
+  context: "query"
 }
+);
+// redirect them back to the page they were at
+  res.redirect("back");
+};
