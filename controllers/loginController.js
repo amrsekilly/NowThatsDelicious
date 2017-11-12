@@ -93,6 +93,8 @@ exports.applyAccountEdits = async (req, res) => {
   context: "query"
 }
 );
+// signal the success of the update
+  req.flash("success", "Successfully updated your info!");
 // redirect them back to the page they were at
   res.redirect("back");
 };
