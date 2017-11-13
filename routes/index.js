@@ -19,6 +19,8 @@ router.get("/login", loginController.loginForm);
 router.get("/account", authController.isLoggedIn, loginController.editAccount);
 // to updated the user's data
 router.post("/account", catchErrors(loginController.applyAccountEdits));
+// forgot password route 
+router.post("/account/forgot", catchErrors(authController.forgot));
 // for logout 
 router.get("/logout", authController.logout); 
 // for register 
