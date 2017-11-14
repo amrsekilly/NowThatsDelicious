@@ -1,5 +1,9 @@
 // import passport
 const passport = require("passport");
+// import mongoose 
+const mongoose = require("mongoose");
+const User = mongoose.model("User");
+
 
 // the login controller
 exports.login = passport.authenticate("local", {
@@ -27,4 +31,12 @@ exports.isLoggedIn = (req, res, next) => {
   }
   req.flash("error", "You must login First!");
   res.redirect("/login");
+};
+
+
+// forgot password controller 
+exports.forgot = async (req, res) => {
+  // check that the user's email exists
+  const user = await User.findOne({email: req.body.email});
+  console.log("Found a user with info:", user);
 };
