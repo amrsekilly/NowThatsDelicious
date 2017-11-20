@@ -39,7 +39,7 @@ exports.isLoggedIn = (req, res, next) => {
 exports.forgot = async (req, res) => {
   // check that the user's email exists
   const user = await User.findOne({email: req.body.email});
-  console.log("Found a user with info:", user);
+  // console.log("Found a user with info:", user);
   // if there was no user, flash that info 
   if (!user) {
     // send a vague message to avoid revealing personal info about the account holders
@@ -47,5 +47,7 @@ exports.forgot = async (req, res) => {
   }
   // else if there was a valid user 
   user.pwdResetToken = Crypto.randomBytes(20).toString("hex");
-  console.log("password will expire in 1 hour: ", Date.now() + (60 * 60 * 1000));
+  user.tokenExpiryTime = Date.now() + (60 * 60 * 1000);
+  user.save();
+  // console.log("password will expire in 1 hour: ");
 };

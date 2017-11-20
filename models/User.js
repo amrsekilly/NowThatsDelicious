@@ -21,7 +21,9 @@ const userSchema = new Schema({
     type: String,
     trim: true,
     required: "Supply your name please"
-  }
+  },
+  pwdResetToken: String,
+  tokenExpiryTime: Date
 });
 
 // get the user's gravatar as a virtual field 
