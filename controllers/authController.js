@@ -39,4 +39,9 @@ exports.forgot = async (req, res) => {
   // check that the user's email exists
   const user = await User.findOne({email: req.body.email});
   console.log("Found a user with info:", user);
+  // if there was no user, flash that info 
+  if (!user) {
+    // send a vague message to avoid revealing personal info about the account holders
+    req.flash("success", "An email has been sent to that user's account!");
+  }
 };
