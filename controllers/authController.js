@@ -35,7 +35,6 @@ exports.isLoggedIn = (req, res, next) => {
   res.redirect("/login");
 };
 
-
 // forgot password controller 
 exports.forgot = async (req, res) => {
   // check that the user's email exists
@@ -47,5 +46,6 @@ exports.forgot = async (req, res) => {
     req.flash("success", "An email has been sent to that user's account!");
   }
   // else if there was a valid user 
-  console.log("Reset Password Token: ", Crypto.randomBytes(20).toString("hex"));
+  user.pwdResetToken = Crypto.randomBytes(20).toString("hex");
+  console.log("password will expire in 1 hour: ", Date.now() + (60 * 60 * 1000));
 };
