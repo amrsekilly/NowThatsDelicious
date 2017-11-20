@@ -3,6 +3,8 @@ const passport = require("passport");
 // import mongoose 
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
+// import crypto to generate the hashes
+const Crypto = require("crypto");
 
 
 // the login controller
@@ -44,4 +46,6 @@ exports.forgot = async (req, res) => {
     // send a vague message to avoid revealing personal info about the account holders
     req.flash("success", "An email has been sent to that user's account!");
   }
+  // else if there was a valid user 
+  console.log("Reset Password Token: ", Crypto.randomBytes(20).toString("hex"));
 };
