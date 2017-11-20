@@ -48,6 +48,6 @@ exports.forgot = async (req, res) => {
   // else if there was a valid user 
   user.pwdResetToken = Crypto.randomBytes(20).toString("hex");
   user.tokenExpiryTime = Date.now() + (60 * 60 * 1000);
-  user.save();
+  await user.save();
   // console.log("password will expire in 1 hour: ");
 };
