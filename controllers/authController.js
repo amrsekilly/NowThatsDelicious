@@ -77,5 +77,8 @@ exports.reset = async (req, res) => {
     // redirect them back to the login page
     return res.redirect('/login');
   }
-  
+
+  // if there's a user, show them the reset password form 
+  res.render("reset", {title: "Reset your password"}); 
+
 };
