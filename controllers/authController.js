@@ -51,5 +51,9 @@ exports.forgot = async (req, res) => {
   // give them one hour to reset their password
   user.tokenExpiryTime = Date.now() + (60 * 60 * 1000);
   await user.save();
-  // console.log("password will expire in 1 hour: ");
+  // send the user an email to reset the password
+  const resetUrl = `http://${req.headers.host}/account/reset/${user.pwdResetToken}`;
+  req.flash("success", `pwd reset link is: ${resetUrl}`);
+  // redirect the user back to the login page 
+  res.redirect("/login");
 };
