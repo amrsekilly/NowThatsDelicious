@@ -34,6 +34,11 @@ authController.login);
 router.post("/login", authController.login);
 // reset the password
 router.get("/account/reset/:token", catchErrors(authController.reset));
+// when user confirms the new password for reset 
+router.post("/account/reset/:token", 
+authController.confirmedPasswords, 
+catchErrors(authController.update)
+);
 // for getting the addStore view
 router.get('/add', authController.isLoggedIn, storeController.addStore);
 // get store by slug 
