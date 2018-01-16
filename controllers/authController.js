@@ -57,3 +57,25 @@ exports.forgot = async (req, res) => {
   // redirect the user back to the login page 
   res.redirect("/login");
 };
+
+
+// reset password method 
+// forgot password controller 
+exports.reset = async (req, res) => {
+  // check that the user's email exists
+  // verify the validity of the reset operation
+  const user = await User.findOne({ 
+    pwdResetToken: req.params.token,
+    tokenExpiryTime: {
+      $gt: Date.now()
+    }
+   });
+
+  if (!user) {
+    // send a vague message to avoid revealing personal info about the account holders
+    req.flash("error", "Password reset token is invalid!");
+    // redirect them back to the login page
+    return res.redirect('/login');
+  }
+  
+};
