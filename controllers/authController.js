@@ -44,9 +44,11 @@ exports.forgot = async (req, res) => {
   if (!user) {
     // send a vague message to avoid revealing personal info about the account holders
     req.flash("success", "An email has been sent to that user's account!");
+    return res.redirect('/login');
   }
   // else if there was a valid user 
   user.pwdResetToken = Crypto.randomBytes(20).toString("hex");
+  // give them one hour to reset their password
   user.tokenExpiryTime = Date.now() + (60 * 60 * 1000);
   await user.save();
   // console.log("password will expire in 1 hour: ");
